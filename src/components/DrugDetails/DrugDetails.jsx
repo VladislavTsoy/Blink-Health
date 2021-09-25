@@ -16,6 +16,10 @@ const DrugDetails = ({ location }) => {
   const [list, setList] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
 
+  /**
+   * Mount: if location has state then render drug 
+   * else split the url for search term and find the drug
+   */
   useEffect(() => {
     if(location?.state?.drug) {
       setList(location.state.drug);
@@ -28,13 +32,28 @@ const DrugDetails = ({ location }) => {
         setList(res?.drugGroup)
       })
     }
+
+    return () => {
+      setList(null);
+      setIsLoading(false)
+    }
   }, [])
 
+  /**
+   * Renders drug information
+   */
   const displayList = () => {
     return (
-      list?.conceptGroup.map(item => item.conceptProperties.map(drug => (
+      list?.conceptGroup
+      .filter(item => {
+        return item.conceptProperties
+      })
+      .map(item => {
+        return item.conceptProperties
+      })
+      .map(drug => (
         <DrugCard key={drug.rxcui} drug={drug}/>
-      )))
+      ))
     )
   }
 

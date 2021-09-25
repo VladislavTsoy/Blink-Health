@@ -15,6 +15,9 @@ const DrugCard = ({ drug }) => {
   const [NDCList, setNDCList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   
+  /**
+   * On mount search for drugs NDCs list
+   */
   useEffect(() => {
     getNDCs(drug.rxcui).then(res => {
       setNDCList(res?.ndcGroup?.ndcList?.ndc || []);
@@ -22,6 +25,9 @@ const DrugCard = ({ drug }) => {
     })
   }, [])
 
+  /**
+   * Renders NDCs list
+   */
   const displayNDCs = () => {
     return (
       <OrderedList style={{ marginLeft: 32 }}>
