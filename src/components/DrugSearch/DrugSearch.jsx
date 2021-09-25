@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { debounce } from 'lodash';
-// import { useHistory } from 'react-router-dom';
 
 // components
 import Navbar from '../Navbar/Navbar';
@@ -13,6 +12,7 @@ import {
   StructuredListCell,
   Loading
 } from 'carbon-components-react';
+import { Search32 } from '@carbon/icons-react';
 
 // api
 import { 
@@ -121,8 +121,9 @@ const DrugSearch = ({ history }) => {
               value={search}
               onChange={onChangeSearch}/>
             <Button 
+              renderIcon={Search32}
+              hasIconOnly
               onClick={() => handleSearch(search)}>
-              Search
             </Button>
           </div>
           {warn && <div className="text-red-500">Nothing could be found for this term.</div>}

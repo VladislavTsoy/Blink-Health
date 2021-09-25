@@ -37,7 +37,7 @@ const DrugDetails = ({ location }) => {
       setList(null);
       setIsLoading(false)
     }
-  }, [])
+  }, [location?.pathname, location?.state?.drug])
 
   /**
    * Renders drug information

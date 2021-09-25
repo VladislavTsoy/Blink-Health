@@ -23,7 +23,7 @@ const DrugCard = ({ drug }) => {
       setNDCList(res?.ndcGroup?.ndcList?.ndc || []);
       setIsLoading(false)
     })
-  }, [])
+  }, [drug?.rxcui])
 
   /**
    * Renders NDCs list
