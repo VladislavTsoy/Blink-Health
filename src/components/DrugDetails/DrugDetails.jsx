@@ -49,11 +49,10 @@ const DrugDetails = ({ location }) => {
         return item.conceptProperties
       })
       .map(item => {
-        return item.conceptProperties
-      })
-      .map(drug => (
-        <DrugCard key={drug.rxcui} drug={drug}/>
-      ))
+        return item.conceptProperties.map(drug => (
+          <DrugCard key={drug.rxcui} drug={drug}/>
+        )
+      )})
     )
   }
 
